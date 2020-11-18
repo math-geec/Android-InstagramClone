@@ -24,7 +24,7 @@ class MainActivity : AppCompatActivity() {
         BottomNavigationView.OnNavigationItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.nav_home -> {
-//                    textView.setText("Home")
+                   // textView.setText("Home")
                     selectedFragment = HomeFragment()
 //                    return@OnNavigationItemSelectedListener true
                 }
