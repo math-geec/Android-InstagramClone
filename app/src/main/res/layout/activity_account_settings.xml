@@ -118,14 +118,18 @@
         android:id="@+id/logout_btn"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Logout Account"
+        android:text="Logout"
+        android:textSize="20sp"
+        android:textColor="@android:color/white"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
         android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
         android:textAllCaps="false"
+        android:background="@color/colorPrimary"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/bio_edittext"/>
+        app:layout_constraintBottom_toBottomOf="parent"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
