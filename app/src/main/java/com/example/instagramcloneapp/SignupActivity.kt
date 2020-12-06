@@ -68,9 +68,9 @@ class SignupActivity : AppCompatActivity() {
         val usersRef: DatabaseReference = FirebaseDatabase.getInstance().reference.child("Users")
         val userMap = HashMap<String, Any>()
         userMap["uid"] = currentUserId
-        userMap["fullName"] = currentUserId
-        userMap["userName"] = currentUserId
-        userMap["email"] = currentUserId
+        userMap["fullName"] = fullName
+        userMap["userName"] = userName
+        userMap["email"] = email
         userMap["bio"] = "Empty bio"
         userMap["image"] = "gs://instagramclone-43480.appspot.com/Default Images/profile.png"
 
