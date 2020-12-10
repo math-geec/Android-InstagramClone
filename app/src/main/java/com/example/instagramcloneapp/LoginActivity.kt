@@ -5,11 +5,14 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.TextUtils
+import android.util.Log
 import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.core.Tag
 import kotlinx.android.synthetic.main.activity_login.*
 import kotlinx.android.synthetic.main.activity_signup.*
 
+private const val TAG = "LoginActivity"
 class LoginActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -20,6 +23,8 @@ class LoginActivity : AppCompatActivity() {
         }
 
         login_btn.setOnClickListener {
+            // prevent clicking multiple times
+            login_btn.isEnabled = false
             loginUser()
         }
     }
@@ -53,6 +58,7 @@ class LoginActivity : AppCompatActivity() {
                 val mAuth: FirebaseAuth = FirebaseAuth.getInstance()
                 mAuth.signInWithEmailAndPassword(email, password)
                     .addOnCompleteListener { task ->
+                        login_btn.isEnabled = true
                         if (task.isSuccessful){
                             progressDialog.dismiss()
                             val intent = Intent(this, MainActivity::class.java)
@@ -62,7 +68,8 @@ class LoginActivity : AppCompatActivity() {
                         }
                         else {
                             val message = task.exception!!.toString()
-                            Toast.makeText(this, "Error: $message", Toast.LENGTH_LONG).show()
+                            Log.e(TAG, "signInWithEmail failed", task.exception)
+                            Toast.makeText(this, "Error: Login failed", Toast.LENGTH_LONG).show()
                             mAuth.signOut()
                             progressDialog.dismiss()
                         }
