@@ -9,7 +9,6 @@ import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
-import kotlinx.android.synthetic.main.activity_login.*
 import kotlinx.android.synthetic.main.activity_signup.*
 
 class SignupActivity : AppCompatActivity() {
@@ -80,7 +79,7 @@ class SignupActivity : AppCompatActivity() {
                     progressDialog.dismiss()
                     Toast.makeText(this, "Account has been created successfully.", Toast.LENGTH_LONG).show()
 
-                    val intent = Intent(this, MainActivity::class.java)
+                    val intent = Intent(this, PostsActivity::class.java)
                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
                     startActivity(intent)
                     finish()
